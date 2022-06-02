@@ -40,6 +40,10 @@ export const toRoman = (n) => {
 
   const determine = function(arr, length) {
     //ReplaceAll with numbers depending on length
+    if (arr[0] === 0) {
+      arr.shift();
+      return;
+    }
     if (length === 1) {
       result.push(numerals[arr[0]]);
     }
@@ -55,9 +59,10 @@ export const toRoman = (n) => {
         result.push(numerals[arr[0]].replaceAll("I", "C").replaceAll("V", "D"));
       } else {
         result.push(numerals[arr[0]].replaceAll("X", "M"));
-      }    }
+      }    
+    }
     if (length === 4) {
-      result.push("M");
+      result.push("M".repeat(arr[0]));
     }
     arr.shift();
     return;
